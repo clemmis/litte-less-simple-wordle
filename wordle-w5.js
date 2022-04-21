@@ -59,42 +59,40 @@ function wordle(target, guess){
         var c = false;
         var d = false;
         var e = false;
-        
-        // if a in target but not in correct position
-        // check if a appears earlier in array, if it does, push 0, else push 1
-
-        // if a in target but not in correct position
-        // check first index of a, if it matches, push 1, else push 0
 
         if (givenwords[0] == givenwords[5]) {a = true && truth.push("2")}                           // if a is in the correct position
         else if (a == false && targetarr.includes(guess.charAt(0)) == true) {truth.push("1")}       // if a in target but not in correct position
         else if ((a == false && targetarr.includes(guess.charAt(0)) == false)) {truth.push("0")}    // if a is not in target
 
         if (givenwords[1] == givenwords[6]) {b = true && truth.push("2")}                           // if b is in the correct position
-        else if (b == false && targetarr.includes(guess.charAt(1)) == true) {truth.push("1")}       // if b in target but not in correct position
-        else if ((b == false && targetarr.includes(guess.charAt(1)) == false)) {truth.push("0")}    // if b is not in target
+        else if (b == false && targetarr.includes(guess.charAt(1)) == true) {                       // if b in target but not in correct position
+                var firstoccurence = guessarr.indexOf(guess.charAt(1))                              // > find index of first occurrence in guess word
+                if (truth[firstoccurence] == 1) {truth.push("0")}                                   // > if the same index in the integer array is 1, push '0' onto other occurrances
+                else {truth.push("1")}}                                                             // > else push 1
+        else if ((c == false && targetarr.includes(guess.charAt(2)) == false)) {truth.push("0")}    // if b is not in target
 
-        if (givenwords[2] == givenwords[7]) {c = true && truth.push("2")}                           // if c is in the correct position
-        else if (c == false && targetarr.includes(guess.charAt(2)) == true) {truth.push("1")}       // if c in target but not in correct position
-        else if ((c == false && targetarr.includes(guess.charAt(2)) == false)) {truth.push("0")}    // if c is not in target
+        if (givenwords[2] == givenwords[7]) {c = true && truth.push("2")}                           
+        else if (c == false && targetarr.includes(guess.charAt(2)) == true) {                       
+                var firstoccurence = guessarr.indexOf(guess.charAt(2))                              
+                if (truth[firstoccurence] == 1) {truth.push("0")}                                   
+                else {truth.push("1")}}                                                             
+        else if ((c == false && targetarr.includes(guess.charAt(2)) == false)) {truth.push("0")}    
 
+        if (givenwords[3] == givenwords[8]) {d = true && truth.push("2")}                           
+        else if (d == false && targetarr.includes(guess.charAt(3)) == true) {                       
+                var firstoccurence = guessarr.indexOf(guess.charAt(3))                              
+                if (truth[firstoccurence] == 1) {truth.push("0")}                                   
+                else {truth.push("1")}}                                                             
+        else if ((d == false && targetarr.includes(guess.charAt(3)) == false)) {truth.push("0")}    
 
-        if (givenwords[3] == givenwords[8]) {d = true && truth.push("2")}
-        else if (d == false && targetarr.includes(guess.charAt(3)) == true) {
-                if (target.indexOf(guess.charAt(3)) == 3) {truth.push("1")}
-                else {truth.push("0")}
-                }
-        else if ((d == false && targetarr.includes(guess.charAt(3)) == false)) {truth.push("0")}
+        if (givenwords[4] == givenwords[9]) {e = true && truth.push("2")}                           
+        else if (e == false && targetarr.includes(guess.charAt(4)) == true) {                       
+                var firstoccurence = guessarr.indexOf(guess.charAt(4))                              
+                if (truth[firstoccurence] == 1) {truth.push("0")}                                   
+                else {truth.push("1")}}                                                             
+        else if ((e == false && targetarr.includes(guess.charAt(4)) == false)) {truth.push("0")}    
 
-
-        if (givenwords[4] == givenwords[9]) {b = true && truth.push("2")}
-        else if (e == false && targetarr.includes(guess.charAt(4)) == true) {
-                if (target.indexOf(guess.charAt(4)) == 4) {truth.push("1")}
-                else {truth.push("0")}
-                }
-        else if ((e == false && targetarr.includes(guess.charAt(4)) == false)) {truth.push("0")}
-
-        // Reminder:
+        // Print the integer array - remember 
         // 0 = letter not in word
         // 1 = letter in word, but in a different place
         // 2 = letter in the word and in the right place.
@@ -102,13 +100,6 @@ function wordle(target, guess){
     }
 }
 
-
-
 // Enter your target word and guess word below - wordle(target word, guess word)
-// For example, if the secret word is CRAZE, and you guess TRACK, the result should be [0,2,2,1,0].
 wordle('craze', 'track') 
-
-// If you have two duplicate letters in the guess word, and only one in the secret word, only one of the letters will be yellow (or green). 
-// For example, if the secret word is CRAZE, and you guess TREES, it should return [0,2,1,0,0].
-wordle('craze', 'trees') 
 
